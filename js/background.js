@@ -12,7 +12,7 @@ var recording = false;
 var tabid = 0;
 var maintabs = [];
 var camtabs = [];
-var recording_type = "tab-only";
+var recording_type = "desktop";
 var pushtotalk;
 var newwindow = null;
 var micable = true;
@@ -38,7 +38,7 @@ chrome.runtime.onInstalled.addListener(function () {
         pushtotalk: false,
         camera: 0,
         mic: 0,
-        type: "tab-only",
+        type: "desktop",
         quality: "max",
         fps: 60,
         start: 0,
@@ -80,7 +80,7 @@ function newRecording(stream) {
 // Save recording
 function saveRecording(url, blobs) {
     newwindow = window.open('../html/videoeditor.html');
-    newwindow.url = url;
+    // newwindow.url = url;
     newwindow.recordedBlobs = blobs;
 }
 
@@ -358,12 +358,12 @@ function injectContent(start) {
                     });
                 }
 
-                chrome.tabs.insertCSS(tab.id, {
-                    file: './css/content.css'
-                })
-                chrome.tabs.insertCSS(tab.id, {
-                    file: './css/libraries/pickr.css'
-                })
+                // chrome.tabs.insertCSS(tab.id, {
+                //     file: './css/content.css'
+                // })
+                // chrome.tabs.insertCSS(tab.id, {
+                //     file: './css/libraries/pickr.css'
+                // })
                 maintabs.push(tab.id);
             } else if (camtabs.indexOf(tab.id) == -1 && recording_type == "camera-only") {
                 // Inject content for camera recording if the script hasn't been injected before in this tab
@@ -391,9 +391,9 @@ function injectContent(start) {
                     });
                 }
 
-                chrome.tabs.insertCSS(tab.id, {
-                    file: './css/cameracontent.css'
-                })
+                // chrome.tabs.insertCSS(tab.id, {
+                //     file: './css/cameracontent.css'
+                // })
                 camtabs.push(tab.id);
             } else {
                 // If the current tab already has the script injected

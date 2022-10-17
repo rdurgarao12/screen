@@ -5,6 +5,7 @@
     pointer-events: none;
     top: 0px;
     left: 0px;
+    display: none;
 }
 #screenity-screen-recorder-extension * {
     pointer-events: unset;
@@ -42,6 +43,7 @@
     z-index: 9999999999999!important;
     position: fixed;
     border-radius: 50%;
+    display: none;
     top: 0px;
     left: 0px;
 }
@@ -161,6 +163,7 @@
     bottom: 15px;
     left: 5px;
     display: table;
+    /* display: none; */
     z-index: 9999999999;
     border-spacing: 10px 0px;
     transition: all .25s cubic-bezier(.05,.03,.35,1);
