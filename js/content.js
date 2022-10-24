@@ -546,19 +546,19 @@ $(document).ready(function(){
     // Switch camera on and off
     function cameraEnabled(enable) {
         cameraon = enable;
-        // if (enable) {
-        //     chrome.runtime.sendMessage({type: "camera-check"});
-        //     $("#"+uniqueid+" #wrap-iframe").removeClass("no-camera");
-        //     $("#"+uniqueid+" #detect-iframe").removeClass("no-camera");
-        //     $("#"+uniqueid+" #camera").addClass("camera-on");
-        //     $("#"+uniqueid+" #toolbar-settings").removeClass("settings-camon");
-        // } else {
+        if (enable) {
+            chrome.runtime.sendMessage({type: "camera-check"});
+            $("#"+uniqueid+" #wrap-iframe").removeClass("no-camera");
+            $("#"+uniqueid+" #detect-iframe").removeClass("no-camera");
+            $("#"+uniqueid+" #camera").addClass("camera-on");
+            $("#"+uniqueid+" #toolbar-settings").removeClass("settings-camon");
+        } else {
             $("#"+uniqueid+" #wrap-iframe").addClass("no-camera");
             $("#"+uniqueid+" #hide-camera").addClass("camera-hidden");
             $("#"+uniqueid+" #detect-iframe").addClass("no-camera");
             $("#"+uniqueid+" #camera").removeClass("camera-on");
             $("#"+uniqueid+" #toolbar-settings").addClass("settings-camon");
-        // }
+        }
     }
     
     // Change camera size

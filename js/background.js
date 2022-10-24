@@ -82,6 +82,16 @@ function saveRecording(url, blobs) {
     newwindow = window.open('../html/videoeditor.html');
     // newwindow.url = url;
     newwindow.recordedBlobs = blobs;
+    // ysFixWebmDuration(blobs, blobs.length, function(fixedBlob) {
+    //     var superBuffer = new Blob(fixedBlob, {
+    //             type: 'video/webm'
+    //     });
+    //     var url = window.URL.createObjectURL(superBuffer);
+    //     chrome.downloads.download({
+    //             url: url
+    //     });
+    //     // $("#download-label").html(chrome.i18n.getMessage("download"))
+    // });
 }
 
 // Stop recording
@@ -358,12 +368,12 @@ function injectContent(start) {
                     });
                 }
 
-                // chrome.tabs.insertCSS(tab.id, {
-                //     file: './css/content.css'
-                // })
-                // chrome.tabs.insertCSS(tab.id, {
-                //     file: './css/libraries/pickr.css'
-                // })
+                chrome.tabs.insertCSS(tab.id, {
+                    file: './css/content.css'
+                })
+                chrome.tabs.insertCSS(tab.id, {
+                    file: './css/libraries/pickr.css'
+                })
                 maintabs.push(tab.id);
             } else if (camtabs.indexOf(tab.id) == -1 && recording_type == "camera-only") {
                 // Inject content for camera recording if the script hasn't been injected before in this tab
@@ -391,9 +401,9 @@ function injectContent(start) {
                     });
                 }
 
-                // chrome.tabs.insertCSS(tab.id, {
-                //     file: './css/cameracontent.css'
-                // })
+                chrome.tabs.insertCSS(tab.id, {
+                    file: './css/cameracontent.css'
+                })
                 camtabs.push(tab.id);
             } else {
                 // If the current tab already has the script injected
